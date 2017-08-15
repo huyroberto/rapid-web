@@ -1,0 +1,1188 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="main_container">
+    <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+
+            <div class="navbar nav_title" style="border: 0;">
+                <a href="http://oms.rapid.com.vn" class="site_title">
+                    <i class="fa fa-paw"></i> <span>
+                        Rapid Logistics
+                    </span>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <h3>Category</h3>
+                    <ul class="nav side-menu">
+                        <li>
+                            <a><i class="fa fa-home"></i> Manifest</a>
+                            <ul class="nav child_menu">
+                                <li class=" hide">
+                                    <a href="http://oms.rapid.com.vn/manifest/translate">Dịch thuật</a>
+                                </li>
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/manifest/pending">Duyệt đối tác</a>
+                                </li>
+                                <li class="current-page">
+                                    <a href="http://oms.rapid.com.vn/manifest/confirm">Hoàn thiện dữ liệu</a>
+                                </li>
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/manifest/accepted">Duyệt eCus</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><i class="fa fa-home"></i> Shipment</a>
+                            <ul class="nav child_menu">
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/shipment">Danh sách</a>
+                                </li>
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/shipment/list-xuat-nhap">Xuất nhập kho</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a><i class="fa fa-cogs"></i> Quản lý</a>
+                            <ul class="nav child_menu">
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/user">Thành viên</a>
+                                </li>
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/user/groups">Nhóm thành viên</a>
+                                </li>
+                                <li class="">
+                                    <a href="http://oms.rapid.com.vn/user/privilege">Quyền thành viên</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+                <a data-toggle="tooltip" data-placement="top" title="Settings">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                    <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Lock">
+                    <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Logout" href="http://oms.rapid.com.vn/user/logout">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                </a>
+            </div>
+            <!-- /menu footer buttons -->
+        </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+
+        <div class="nav_menu">
+            <nav class="" role="navigation">
+                <div class="nav toggle hidden-lg">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <ul class="nav navbar-nav navbar-left" style="padding: 15px 20px 0px;">
+                    <li>
+                        <form method="POST" action="http://oms.rapid.com.vn/manifest/confirm" accept-charset="UTF-8" id="FormExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" enctype="multipart/form-data">
+                            <input name="_token" type="hidden" value="EtWqw7YbPMniz352Xg0Bh05rfJpw5Mhqaphef0Kc">
+                            <span class="btn btn-round btn-success btn-file">
+                                <i class="fa fa-upload"></i> <span class="hidden-xs">Import Excel</span> <input type="file" name="file" id="fileExcel">
+                            </span>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="http://oms.rapid.com.vn/images/default-avatar.png" alt="">Administrator
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                            <li>
+                                <a href="http://oms.rapid.com.vn/user/profile">  Tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="http://oms.rapid.com.vn/user/logout"><i class="fa fa-sign-out pull-right"></i> Thoát</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li role="presentation" class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">0</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <!-- /top navigation -->            <!-- page content -->
+    <div class="right_col" role="main">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Danh sách manifest cần hoàn thiện dữ liệu</h3>
+            </div>
+        </div>
+        <br><br><br>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="well well-sm well-white">
+                    <form action="" method="GET" class="form-horizontal" role="form" id="SearhForm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="width: 100%;">
+                                    <legend>Lọc dữ liệu</legend>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-3">
+                                    <label for="airbill">AirWay Bill</label>
+                                    <input type="text" class="form-control" name="airbill" value="" placeholder="Input AirWay Bill">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="boxid">BoxID</label>
+                                    <input type="text" class="form-control" name="boxid" value="" placeholder="Input BoxID">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="flight">Flight</label>
+                                    <input type="text" class="form-control" name="flight" value="" placeholder="Input Flight No">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="shipment">Shipment</label>
+                                    <input type="text" class="form-control" name="shipment" value="" placeholder="Input Shipment No">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="trans">Dịch thuật</label>
+                                    <select name="trans" id="trans" class="form-control">
+                                        <option value="">Tất cả</option>
+                                        <option value="yes">Đã dịch</option>
+                                        <option value="no">Chưa dịch</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="timer">Khoảng thời gian</label>
+                                    <input type="hidden" name="_ts" value="">
+                                    <input type="hidden" name="_te" value="">
+                                    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                        <span></span> <b class="caret pull-right" style="margin-top: 8px;"></b>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="source">Source</label>
+                                    <select name="source" id="source" class="form-control">
+                                        <option value="">Tất cả</option>
+                                        <option value="HAN">HAN</option>
+                                        <option value="SGN">SGN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="trans">Trạng thái dữ liệu</label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="confirm" type="checkbox" value="1">
+                                            Đã hoàn thiện
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-dark"><i class="fa fa-filter"></i> Lọc</button>
+                                <span class="btn btn-default f5-form"><i class="fa fa-refresh"></i> Reset</span>
+                                <div class="pull-right">
+                                    <a href="http://oms.rapid.com.vn/manifest/confirm/print?" target="_blank"
+                                       class="btn btn-info disabled"><i class="fa fa-print"></i>Print</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well well-sm well-white">
+                    <legend> Master AirWay Bill</legend>
+                    <ol class="panel-mawb">
+                        <li>
+                            <a href="#" class="choose-mawb" data-id="851-2715 3464"><strong>851-2715 3464</strong> <span class="label label-default">726</span></a>
+                            <button type="button" class="btn btn-xs btn-danger pull-right js-remove-mawb" data-id="851-2715 3464" style="display:none;"><i class="fa fa-close"></i></button>
+                            <ul>
+                                <li><a href="#" class="choose-box" data-id="AHAN01-01-BA-B00054">AHAN01-01-BA-B00054 <em>(34)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00427">AHAN11-01-BA-B00427 <em>(48)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00428">AHAN11-01-BA-B00428 <em>(55)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00429">AHAN11-01-BA-B00429 <em>(42)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00432">AHAN11-01-BA-B00432 <em>(35)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00433">AHAN11-01-BA-B00433 <em>(48)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00434">AHAN11-01-BA-B00434 <em>(20)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00435">AHAN11-01-BA-B00435 <em>(1)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-BA-B00436">AHAN11-01-BA-B00436 <em>(3)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-YW-B00150">AHAN11-01-YW-B00150 <em>(22)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-YW-B00151">AHAN11-01-YW-B00151 <em>(28)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-YW-B00152">AHAN11-01-YW-B00152 <em>(15)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-01-YW-B00153">AHAN11-01-YW-B00153 <em>(30)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00151">AHAN11-02-BA-B00151 <em>(22)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00152">AHAN11-02-BA-B00152 <em>(19)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00153">AHAN11-02-BA-B00153 <em>(38)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00154">AHAN11-02-BA-B00154 <em>(2)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00155">AHAN11-02-BA-B00155 <em>(29)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00157">AHAN11-02-BA-B00157 <em>(39)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00158">AHAN11-02-BA-B00158 <em>(31)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00159">AHAN11-02-BA-B00159 <em>(6)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-BA-B00160">AHAN11-02-BA-B00160 <em>(51)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-YW-B00070">AHAN11-02-YW-B00070 <em>(1)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-YW-B00071">AHAN11-02-YW-B00071 <em>(42)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-YW-B00072">AHAN11-02-YW-B00072 <em>(22)</em></a></li>
+                                <li><a href="#" class="choose-box" data-id="AHAN11-02-YW-B00073">AHAN11-02-YW-B00073 <em>(43)</em></a></li>
+                            </ul>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Manifest <small>Danh sách đã được duyệt </small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <h4><small>Total: </small><strong class="text-danger">722</strong></h4>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <ul class="stats-overview hide">
+                            <li>
+                                <span class="name"> Thống kê abc </span>
+                                <span class="value text-success"> 2300 </span>
+                            </li>
+                            <li>
+                                <span class="name"> Thống kê abc </span>
+                                <span class="value text-success"> 2000 </span>
+                            </li>
+                            <li class="hidden-phone">
+                                <span class="name"> Thống kê abc </span>
+                                <span class="value text-success"> 20 </span>
+                            </li>
+                        </ul>
+                        <!-- content starts here -->
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Master AirWayBill </th>
+                                        <th>Shipment No </th>
+                                        <th>Box ID </th>
+                                        <th>Flight Number</th>
+                                        <th>Contact Name</th>
+                                        <th>Items </th>
+                                        <th>Qty </th>
+                                        <th>Unit Price </th>
+                                        <th>Total Value </th>
+                                        <th>Weight </th>
+                                        <th><i class="fa fa-wrench"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-335583167-3886</td>
+                                        <td>AHAN11-01-BA-B00427</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Spencer Tiesse</p>
+                                            <p style="margin: 0;">840902551895</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>313110</td>
+                                        <td>815511</td>
+                                        <td>0.328</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="For Mining Use USB 3.0 1x to 16x Card Adapter Power Cable Extender Riser Cable - intl" class="red">
+                                                For Mining Use USB 3...
+                                            </span>
+                                        </td>
+                                        <td>4</td>
+                                        <td>167467</td>
+                                        <td>815511</td>
+                                        <td>0.328</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35282"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>1.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="PC Dual Power Adapter Supply Power Adapter Starter Card Add 2 PSU Connector - intl" class="red">
+                                                PC Dual Power Adapte...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>145643</td>
+                                        <td>815511</td>
+                                        <td>0.328</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35283"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-354182367-3917</td>
+                                        <td>AHAN11-01-BA-B00427</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Phạm minh dũng</p>
+                                            <p style="margin: 0;">0906207777</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>222000</td>
+                                        <td>222000</td>
+                                        <td>0.148</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>2.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Golf Ball Tee Holder Golf Pro Clip Caddy with Nylon Brush Divot Tool - intl" class="red">
+                                                Golf Ball Tee Holder...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>134000</td>
+                                        <td>222000</td>
+                                        <td>0.148</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35555"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>2.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Flat Golf Ball Marker Push Shot 1.5Inch Golf Accessory Iron+ABS - intl" class="red">
+                                                Flat Golf Ball Marke...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>88000</td>
+                                        <td>222000</td>
+                                        <td>0.148</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35556"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-367145497-9594</td>
+                                        <td>AHAN11-01-BA-B00429</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Dương Hồng Ngọc</p>
+                                            <p style="margin: 0;">0983638910</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>370000</td>
+                                        <td>370000</td>
+                                        <td>0.32</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>3.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Sunweb Women Casual O-Neck Long Sleeve Patchwork Contrast Color Slim T-Shirt Tops ( Black ) - intl" class="red">
+                                                Sunweb Women Casual...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>168000</td>
+                                        <td>370000</td>
+                                        <td>0.32</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35743"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>3.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Sunweb New Fashion Women Casual Long Sleeve Base Ball Long T-Shirt Blouse ( Gray ) - intl" class="red">
+                                                Sunweb New Fashion W...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>202000</td>
+                                        <td>370000</td>
+                                        <td>0.32</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35744"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-388869667-4950</td>
+                                        <td>AHAN11-01-YW-B00151</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Minh Trí</p>
+                                            <p style="margin: 0;">0909978383</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>921000</td>
+                                        <td>921000</td>
+                                        <td>1.45</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>4.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="HengSong Women Fashion Thicken Warm PU Leather Suede Patchwork Long Boots Black - intl" class="red">
+                                                HengSong Women Fashi...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>544000</td>
+                                        <td>921000</td>
+                                        <td>1.45</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36075"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>4.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="HengSong Women Fashion Solid High Heel Suede Knee Long Boots Black - intl" class="red">
+                                                HengSong Women Fashi...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>377000</td>
+                                        <td>921000</td>
+                                        <td>1.45</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36076"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-338243697-6919</td>
+                                        <td>AHAN11-02-BA-B00160</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Sáng</p>
+                                            <p style="margin: 0;">093 509 4015</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>239000</td>
+                                        <td>239000</td>
+                                        <td>0.116</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>5.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Outdoor Camping Picnic Stove Converter Long-Flat Gas Bottle Adapter Burner(Blue) - intl" class="red">
+                                                Outdoor Camping Picn...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>130000</td>
+                                        <td>239000</td>
+                                        <td>0.116</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35310"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>5.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="12 COB Led Headlight Fishing Camping Riding Outdoor Lighting Head Lamp - intl" class="red">
+                                                12 COB Led Headlight...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>109000</td>
+                                        <td>239000</td>
+                                        <td>0.116</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35311"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>6</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-374621167-8117</td>
+                                        <td>AHAN11-02-YW-B00072</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Thị Hồng Kiều</p>
+                                            <p style="margin: 0;">0906629505</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>333000</td>
+                                        <td>333000</td>
+                                        <td>0.174</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>6.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Women's Bra Pregnant Nursing Underwear Maternity Breastfeeding Feeding Bras (Grey) - intl" class="red">
+                                                Women's Bra Pregnant...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>160000</td>
+                                        <td>333000</td>
+                                        <td>0.174</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35859"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>6.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Women's Bra Pregnant Nursing Underwear Maternity Breastfeeding Feeding Bras (Purple) - intl" class="red">
+                                                Women's Bra Pregnant...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>173000</td>
+                                        <td>333000</td>
+                                        <td>0.174</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="35860"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>7</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>LMPDS-395734497-6480</td>
+                                        <td>AHAN11-02-YW-B00073</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Jisruin Dagout</p>
+                                            <p style="margin: 0;">0985768221</p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>228000</td>
+                                        <td>228000</td>
+                                        <td>0.304</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>7.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Soft 60x40CM Non-slip Bath Mat 4 Colors Modern Bathroom Anti-Slip Carpet Door Mat Home Textile - intl" class="red">
+                                                Soft 60x40CM Non-sli...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>120000</td>
+                                        <td>228000</td>
+                                        <td>0.304</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36160"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>7.2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Honana New Thickened Coral Velvet Memory Foam Rug Bathroom Mat Soft Non-slip Plush Floor Carpet - intl" class="red">
+                                                Honana New Thickened...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>108000</td>
+                                        <td>228000</td>
+                                        <td>0.304</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36161"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>8</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001709</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Mai Tuấn Anh</p>
+                                            <p style="margin: 0;">0942071398</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>187000</td>
+                                        <td>187000</td>
+                                        <td>0.16</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>8.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Vanker- Decompression Magic Cube Finger Fidget Hand Spinner Anti-anxiety Novelty Toy For Kids (Silver) - intl" class="red">
+                                                Vanker- Decompressio...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>187000</td>
+                                        <td>187000</td>
+                                        <td>0.16</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36249"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>9</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001752</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Trần Nguyễn Bích Vân</p>
+                                            <p style="margin: 0;">0949872532</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>130000</td>
+                                        <td>130000</td>
+                                        <td>0.051</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>9.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="2017 Beach Fashion Charm Girl Metal Cat Eye Ear Shades Lens Sunglasses Glsaaes - intl" class="red">
+                                                2017 Beach Fashion C...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>130000</td>
+                                        <td>130000</td>
+                                        <td>0.051</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36274"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>10</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001774</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Thành Công</p>
+                                            <p style="margin: 0;">0908086763</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>186000</td>
+                                        <td>186000</td>
+                                        <td>0.09</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>10.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Q8Mouse Bluetooth 3.0 Wireless Computer Mouse Glod - intl" class="red">
+                                                Q8Mouse Bluetooth 3....
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>186000</td>
+                                        <td>186000</td>
+                                        <td>0.09</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36282"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>11</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001811</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Tuấn Anh</p>
+                                            <p style="margin: 0;">0915777335</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>203000</td>
+                                        <td>203000</td>
+                                        <td>0.197</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>11.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Amart Men Shorts Quick Dry Surfing Boardshorts - intl" class="red">
+                                                Amart Men Shorts Qui...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>203000</td>
+                                        <td>203000</td>
+                                        <td>0.197</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36302"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>12</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001828</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Johan Rivera</p>
+                                            <p style="margin: 0;">1684757593</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>324000</td>
+                                        <td>324000</td>
+                                        <td>0.075</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>12.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="2.4G Wireless PPT Presenter USB Remote Presentation Clicker Laser Pointer Pen - intl" class="red">
+                                                2.4G Wireless PPT Pr...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>324000</td>
+                                        <td>324000</td>
+                                        <td>0.075</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36315"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>13</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001852</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Hoàng Hưởng</p>
+                                            <p style="margin: 0;">0978520099</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>215000</td>
+                                        <td>215000</td>
+                                        <td>0.158</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>13.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Undertale Sans Plush NEW Soft Toy Kids Birthday Gift 13" Action Figure - intl" class="red">
+                                                Undertale Sans Plush...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>215000</td>
+                                        <td>215000</td>
+                                        <td>0.158</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36327"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>14</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001856</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Lê Duy Tưởng</p>
+                                            <p style="margin: 0;">0973565365</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>254000</td>
+                                        <td>254000</td>
+                                        <td>0.126</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>14.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="Moonar Portable Diamond Selector II Gemstone Tester Tool - intl" class="red">
+                                                Moonar Portable Diam...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>254000</td>
+                                        <td>254000</td>
+                                        <td>0.126</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36329"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>15</td>
+                                        <td>
+                                            <p style="margin-bottom:0;">851-2715 3464</p>
+                                            <p style="margin-bottom:0;" class="text-primary">HAN</p>
+                                        </td>
+                                        <td>VN0000001865</td>
+                                        <td>AHAN01-01-BA-B00054</td>
+                                        <td>
+                                            <p style="margin: 0;">RH6319/15AUG</p>
+                                            <p style="margin: 0;white-space: nowrap;">2017-08-15</p>
+                                        </td>
+
+                                        <td>
+                                            <p style="margin: 0;">Nguyễn Thanh Cần</p>
+                                            <p style="margin: 0;">0909009469</p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>304000</td>
+                                        <td>304000</td>
+                                        <td>0.064</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>15.1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td> </td>
+                                        <td>
+                                            <span style="white-space: nowrap;" data-toggle="tooltip" data-placement="left" title="0.4x Zoom Cell Phone Camera Lens Telescope Telephoto + TripodHolder New Universal (Black) - intl" class="red">
+                                                0.4x Zoom Cell Phone...
+                                            </span>
+                                        </td>
+                                        <td>1</td>
+                                        <td>304000</td>
+                                        <td>304000</td>
+                                        <td>0.064</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-default js-modal-edit" data-id="36334"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center">
+                            <ul class="pagination"><li class="disabled"><span>&laquo;</span></li> <li class="active"><span>1</span></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=2">2</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=3">3</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=4">4</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=5">5</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=6">6</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=7">7</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=8">8</a></li><li class="disabled"><span>...</span></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=48">48</a></li><li><a href="http://oms.rapid.com.vn/manifest/confirm?page=49">49</a></li> <li><a href="http://oms.rapid.com.vn/manifest/confirm?page=2" rel="next">&raquo;</a></li></ul>
+                        </div>
+
+                        <!-- content ends here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer content -->
+        <footer>
+            <div class="">
+                <p class="pull-right">
+                    Rapid Logistics©2017.
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+    <!-- /page content -->
+</div>

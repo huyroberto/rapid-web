@@ -18,5 +18,10 @@ namespace Rapid.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Accept()
+        {
+            return View();
+        }
     }
 }

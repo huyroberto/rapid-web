@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Accept";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="top_nav">
+
+    <div class="nav_menu">
+        <nav class="" role="navigation">
+            <div class="nav toggle hidden-lg">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <ul class="nav navbar-nav navbar-left" style="padding: 15px 20px 0px;">
+                <li>
+                    <form method="POST" action="http://oms.rapid.com.vn/manifest/pending" accept-charset="UTF-8" id="FormExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" enctype="multipart/form-data">
+                        <input name="_token" type="hidden" value="EtWqw7YbPMniz352Xg0Bh05rfJpw5Mhqaphef0Kc">
+                        <span class="btn btn-round btn-success btn-file">
+                            <i class="fa fa-upload"></i> <span class="hidden-xs">Import Excel</span> <input type="file" name="file" id="fileExcel">
+                        </span>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="http://oms.rapid.com.vn/images/default-avatar.png" alt="">Administrator
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                        <li>
+                            <a href="http://oms.rapid.com.vn/user/profile">  Tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="http://oms.rapid.com.vn/user/logout"><i class="fa fa-sign-out pull-right"></i> Thoát</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">0</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</div>

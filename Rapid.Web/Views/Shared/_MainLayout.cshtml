@@ -16,7 +16,90 @@
 <body class="nav-md footer_fixed">
 
     <div class="container body">
-        @RenderBody()
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="http://oms.rapid.com.vn" class="site_title">
+                            <i class="fa fa-paw"></i> <span>
+                                @ViewBag.Title
+                            </span>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Category</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Manifest</a>
+                                    <ul class="nav child_menu">
+                                        <li class="" hide">
+                                            <a href="http://oms.rapid.com.vn/manifest/translate">Dịch thuật</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/manifest/pending">Duyệt đối tác</a>
+                                        </li>
+                                        <li class="current-page">
+                                            <a href="http://oms.rapid.com.vn/manifest/confirm">Hoàn thiện dữ liệu</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/manifest/accepted">Duyệt eCus</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-home"></i> Shipment</a>
+                                    <ul class="nav child_menu">
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/shipment">Danh sách</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/shipment/list-xuat-nhap">Xuất nhập kho</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-cogs"></i> Quản lý</a>
+                                    <ul class="nav child_menu">
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/user">Thành viên</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/user/groups">Nhóm thành viên</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="http://oms.rapid.com.vn/user/privilege">Quyền thành viên</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="http://oms.rapid.com.vn/user/logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            @RenderBody()
+        </div>
     </div>
 
     <div id="custom_notifications" class="custom-notifications dsp_none">
@@ -25,27 +108,27 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
     @*<script src="/js/bootstrap.min.js"></script>
-    <!-- bootstrap progress js -->
-    <script src="/js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
-    <!-- icheck -->
-    <script src="/js/icheck/icheck.min.js"></script>
-    <!-- switchery -->
-    <script src="/js/switchery/switchery.min.js"></script>
-    <!-- daterangepicker -->
-    <script type="text/javascript" src="/js/moment.min.js"></script>
-    <script type="text/javascript" src="/js/datepicker/daterangepicker.js"></script>
-    <script type="text/javascript" src="/js/sweetalert/sweetalert.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.blockUI.js"></script>
-    <script type="text/javascript" src="/js/notify/pnotify.core.js"></script>
-    <script type="text/javascript" src="/js/notify/pnotify.buttons.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
-    <script type="text/javascript" src="/js/customs/excel.js"></script>
-    <script src="/js/custom.js"></script>
+        <!-- bootstrap progress js -->
+        <script src="/js/progressbar/bootstrap-progressbar.min.js"></script>
+        <script src="/js/nicescroll/jquery.nicescroll.min.js"></script>
+        <!-- icheck -->
+        <script src="/js/icheck/icheck.min.js"></script>
+        <!-- switchery -->
+        <script src="/js/switchery/switchery.min.js"></script>
+        <!-- daterangepicker -->
+        <script type="text/javascript" src="/js/moment.min.js"></script>
+        <script type="text/javascript" src="/js/datepicker/daterangepicker.js"></script>
+        <script type="text/javascript" src="/js/sweetalert/sweetalert.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="/js/notify/pnotify.core.js"></script>
+        <script type="text/javascript" src="/js/notify/pnotify.buttons.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/customs/excel.js"></script>
+        <script src="/js/custom.js"></script>
 
-    <script>
-        NProgress.done();
-    </script>*@
+        <script>
+            NProgress.done();
+        </script>*@
     <!-- /datepicker -->
     <!-- /footer content -->
 </body>

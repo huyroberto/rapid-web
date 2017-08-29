@@ -17,5 +17,15 @@ namespace Rapid.Data
         dynamic Save(dynamic manifest);
 
         dynamic Remove(dynamic manifest);
+
+        List<dynamic> FilterStandard(
+                string AirwayBill,
+                string BoxID,
+                string FlightNo,
+                string Shipmment,
+                DateTime TimeCreatedFrom, DateTime TimeCreatedTo,
+                bool IsTranslated,
+                bool IsApproved
+            );
     }
 }

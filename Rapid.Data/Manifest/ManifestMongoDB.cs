@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Dynamic;
 using MongoDB.Bson.IO;
+using System.Configuration;
 
 namespace Rapid.Data.Manifest
 {
@@ -27,8 +28,8 @@ namespace Rapid.Data.Manifest
         {
             try
             {
-                string _dbConnectionString = System.Configuration.ConfigurationSettings.AppSettings["MANIFEST_DB_CONN"];
-                string _dbDatabase = System.Configuration.ConfigurationSettings.AppSettings["MANIFEST_DB_NAME"];
+                string _dbConnectionString = ConfigurationManager.AppSettings["MANIFEST_DB_CONN"];
+                string _dbDatabase = ConfigurationManager.AppSettings["MANIFEST_DB_NAME"];
 
                 _client = new MongoDB.Driver.MongoClient(_dbConnectionString);
                 _data = _client.GetDatabase(_dbDatabase);
@@ -49,7 +50,7 @@ namespace Rapid.Data.Manifest
 
             var _manifestCollection = _data.GetCollection<BsonDocument>(MANIFEST_COLLECTION);
             var result = _manifestCollection.Find(new BsonDocument())
-                 //.Project(Builders<BsonDocument>.Projection.Exclude("_id"))
+                 //.Project(Builders<BsonDocument>.Projection.Exclude("_id"))  
                 .ToList();
             foreach(var manifest in result)
             {
@@ -79,6 +80,11 @@ namespace Rapid.Data.Manifest
                 e._id = new ObjectId(id.ToString());
             }
             return e;
+        }
+
+        public List<dynamic> FilterStandard(string AirwayBill, string BoxID, string FlightNo, string Shipmment, DateTime TimeCreatedFrom, DateTime TimeCreatedTo, bool IsTranslated, bool IsApproved)
+        {
+            throw new NotImplementedException();
         }
     }
 }

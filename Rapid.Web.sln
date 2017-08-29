@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapid.Web", "Rapid.Web\Rapi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapit.Web.API", "Rapit.Web.API\Rapit.Web.API.csproj", "{61EC29E8-65C5-4ED9-851C-11AD1A7B7385}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapid.Data", "Rapid.Data\Rapid.Data.csproj", "{BAF0DF17-5429-4361-A8BB-69CD69E69284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapid.UnitTest", "Rapid.UnitTest\Rapid.UnitTest.csproj", "{A8021C87-786D-4650-9210-7906D668DD5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{61EC29E8-65C5-4ED9-851C-11AD1A7B7385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61EC29E8-65C5-4ED9-851C-11AD1A7B7385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61EC29E8-65C5-4ED9-851C-11AD1A7B7385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF0DF17-5429-4361-A8BB-69CD69E69284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF0DF17-5429-4361-A8BB-69CD69E69284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF0DF17-5429-4361-A8BB-69CD69E69284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF0DF17-5429-4361-A8BB-69CD69E69284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8021C87-786D-4650-9210-7906D668DD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8021C87-786D-4650-9210-7906D668DD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8021C87-786D-4650-9210-7906D668DD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8021C87-786D-4650-9210-7906D668DD5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

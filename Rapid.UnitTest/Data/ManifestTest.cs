@@ -19,6 +19,8 @@ namespace Rapid.UnitTest.Data
             var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).Search(String.Empty);
             Assert.IsNotNull(listManifest);
             Assert.IsTrue(listManifest.Count > 0);
+            
         }
     }
 }
+

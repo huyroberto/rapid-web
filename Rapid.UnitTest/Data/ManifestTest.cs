@@ -21,6 +21,22 @@ namespace Rapid.UnitTest.Data
             Assert.IsTrue(listManifest.Count > 0);
             
         }
+
+        [TestMethod]
+        public void TestFilterStandard()
+        {
+            var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).FilterStandard(
+                "851-0876 4814",
+               String.Empty,
+               String.Empty,
+               String.Empty,
+               null,
+               null,
+               null,
+               null,
+               String.Empty);
+            Assert.IsNotNull(listManifest);
+        }
     }
 }
 

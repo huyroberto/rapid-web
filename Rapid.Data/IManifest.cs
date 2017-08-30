@@ -23,9 +23,10 @@ namespace Rapid.Data
                 string BoxID,
                 string FlightNo,
                 string Shipmment,
-                DateTime TimeCreatedFrom, DateTime TimeCreatedTo,
-                bool IsTranslated,
-                bool IsApproved
+                DateTime? TimeCreatedFrom, DateTime? TimeCreatedTo,
+                bool? IsTranslated,
+                bool? IsApproved,
+                string Status
             );
     }
 }

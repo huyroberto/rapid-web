@@ -96,11 +96,11 @@ namespace Rapid.Data.Manifest
             return e;
         }
 
-        public List<dynamic> FilterStandard(string AirwayBill, string BoxID, string FlightNo, string Shipmment, DateTime TimeCreatedFrom, DateTime TimeCreatedTo, bool IsTranslated, bool IsApproved)
+        public List<dynamic> FilterStandard(string AirwayBill, string BoxID, string FlightNo, string Shipmment, DateTime? TimeCreatedFrom, DateTime? TimeCreatedTo, bool? IsTranslated, bool? IsApproved, string Status)
         {
             List<dynamic> _list = new List<dynamic>();
             var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Ne("_id",BsonNull.Value );
+            var filter = builder.Ne("_id", BsonNull.Value);
             if (!String.IsNullOrEmpty(AirwayBill))
                 filter = filter & builder.Eq("item.MasterAirWayBill", AirwayBill);
             if (!String.IsNullOrEmpty(BoxID))
@@ -108,8 +108,33 @@ namespace Rapid.Data.Manifest
             if (!String.IsNullOrEmpty(FlightNo))
                 filter = filter & builder.Eq("item.FlightNumber", FlightNo);
 
+            if (!String.IsNullOrEmpty(Shipmment))
+                filter = filter & builder.Eq("item.ShipmentNo", Shipmment);
+
+            if (!String.IsNullOrEmpty(Status))
+            {
+                if (Status == "null")
+                    filter = filter & builder.Eq("status", BsonNull.Value);
+                else
+                    filter = filter & builder.Eq("status", Status);
+
+            }
+            if (TimeCreatedFrom.HasValue)
+            {
+                filter = filter & builder.Gte("time_created", long.Parse(TimeCreatedFrom.Value.ToLongTimeString()));
+            }
+
+            if (TimeCreatedTo.HasValue)
+            {
+                filter = filter & builder.Lte("time_created", long.Parse(TimeCreatedTo.Value.ToLongTimeString()));
+            }
+
+            if (IsApproved.HasValue)
+            {
+                filter = filter & builder.Eq("status", "approved");
+            }
             var _manifestCollection = _data.GetCollection<BsonDocument>(MANIFEST_COLLECTION);
-            var result = _manifestCollection.Find(new BsonDocument())
+            var result = _manifestCollection.Find(filter)
                 //.Project(Builders<BsonDocument>.Projection.Exclude("_id"))  
                 .ToList();
             foreach (var manifest in result)

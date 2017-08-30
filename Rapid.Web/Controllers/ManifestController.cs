@@ -14,6 +14,21 @@ namespace Rapid.Web.Controllers
             return View();
         }
 
+        public ActionResult Pending()
+        {
+            //var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).FilterStandard(
+            // String.Empty,
+            //  String.Empty,
+            //  String.Empty,
+            //  String.Empty,
+            //  null,
+            //  null,
+            //  null,
+            //  null,
+            //  "null");
+            return View();
+        }
+
         public ActionResult Confirm()
         {
             return View();

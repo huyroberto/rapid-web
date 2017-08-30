@@ -17,9 +17,19 @@ namespace Rapit.Web.API.Controllers
 
         [Route("manifest/list/{Status}")]
         [HttpGet]
-        public List<JObject> GetManifestByStatus(string Status)
+        public List<dynamic> GetManifestByStatus(string Status)
         {
-            return new List<JObject>() { };
+            var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).FilterStandard(
+             String.Empty,
+              String.Empty,
+              String.Empty,
+              String.Empty,
+              null,
+              null,
+              null,
+              null,
+              Status);
+            return listManifest;
         }
     }
 }

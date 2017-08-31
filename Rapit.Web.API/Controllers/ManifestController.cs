@@ -17,9 +17,10 @@ namespace Rapit.Web.API.Controllers
 
         [Route("manifest/list/{Status}")]
         [HttpGet]
-        public List<dynamic> GetManifestByStatus(string Status)
+        public dynamic GetManifestByStatus(string Status,int PageSize, int PageIndex)
         {
-            var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).FilterStandard(
+            long TotalPage = 0;
+            var listManifest = Rapid.Data.ManifestProvider.GetDataProvider(Rapid.Data.DATABASE_TYPE.MONGODB).FilterStandardPaging(
              String.Empty,
               String.Empty,
               String.Empty,
@@ -28,8 +29,19 @@ namespace Rapit.Web.API.Controllers
               null,
               null,
               null,
-              Status);
-            return listManifest;
+              Status,
+              "_id",
+              PageIndex,
+              PageSize,
+              out TotalPage
+              );
+            return
+                new
+                {
+                    total_page = TotalPage,
+                    data =
+                listManifest
+                };
         }
     }
 }

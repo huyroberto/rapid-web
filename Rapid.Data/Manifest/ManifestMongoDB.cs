@@ -143,5 +143,61 @@ namespace Rapid.Data.Manifest
             }
             return _list;
         }
+
+        public List<dynamic> FilterStandardPaging(string AirwayBill, string BoxID, string FlightNo, string Shipmment, DateTime? TimeCreatedFrom, DateTime? TimeCreatedTo, bool? IsTranslated, bool? IsApproved, string Status, string SortByKey, int PageIndex, int PageSize, out long TotalPage)
+        {
+            List<dynamic> _list = new List<dynamic>();
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Ne("_id", BsonNull.Value);
+            if (!String.IsNullOrEmpty(AirwayBill))
+                filter = filter & builder.Eq("item.MasterAirWayBill", AirwayBill);
+            if (!String.IsNullOrEmpty(BoxID))
+                filter = filter & builder.Eq("item.BoxID", BoxID);
+            if (!String.IsNullOrEmpty(FlightNo))
+                filter = filter & builder.Eq("item.FlightNumber", FlightNo);
+
+            if (!String.IsNullOrEmpty(Shipmment))
+                filter = filter & builder.Eq("item.ShipmentNo", Shipmment);
+
+            if (!String.IsNullOrEmpty(Status))
+            {
+                if (Status == "null")
+                    filter = filter & builder.Eq("status", BsonNull.Value);
+                else
+                    filter = filter & builder.Eq("status", Status);
+
+            }
+            if (TimeCreatedFrom.HasValue)
+            {
+                filter = filter & builder.Gte("time_created", long.Parse(TimeCreatedFrom.Value.ToLongTimeString()));
+            }
+
+            if (TimeCreatedTo.HasValue)
+            {
+                filter = filter & builder.Lte("time_created", long.Parse(TimeCreatedTo.Value.ToLongTimeString()));
+            }
+
+            if (IsApproved.HasValue)
+            {
+                filter = filter & builder.Eq("status", "approved");
+            }
+            var _manifestCollection = _data.GetCollection<BsonDocument>(MANIFEST_COLLECTION);
+            int skip = (PageIndex - 1) * PageSize;
+            SortByKey = String.Concat("{", SortByKey, ":1}");
+            TotalPage = _manifestCollection.Find(filter).Count();
+            TotalPage = long.Parse(Math.Ceiling((decimal)TotalPage / (decimal)PageSize).ToString());
+            var result = _manifestCollection.Find(filter)
+                .Sort(SortByKey)
+                .Skip(skip)
+                .Limit(PageSize)
+                //.Project(Builders<BsonDocument>.Projection.Exclude("_id"))  
+                .ToList();
+
+            foreach (var manifest in result)
+            {
+                _list.Add(ToDynamic(manifest));
+            }
+            return _list;
+        }
     }
 }

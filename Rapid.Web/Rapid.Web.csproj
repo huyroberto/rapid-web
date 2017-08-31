@@ -146,6 +146,7 @@
     <Content Include="Views\Manifest\Index.cshtml" />
     <Content Include="Views\Manifest\Confirm.cshtml" />
     <Content Include="Views\Manifest\Accept.cshtml" />
+    <Content Include="Views\Manifest\Pending.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

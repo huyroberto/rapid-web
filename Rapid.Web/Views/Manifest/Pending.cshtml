@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = "Pending Manifest";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="top_nav">
+
+    <div class="nav_menu">
+        <nav class="" role="navigation">
+            <div class="nav toggle hidden-lg">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <ul class="nav navbar-nav navbar-left" style="padding: 15px 20px 0px;">
+                <li>
+                    <form method="POST" action="http://oms.rapid.com.vn/manifest/pending" accept-charset="UTF-8" id="FormExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" enctype="multipart/form-data">
+                        <input name="_token" type="hidden" value="EtWqw7YbPMniz352Xg0Bh05rfJpw5Mhqaphef0Kc">
+                        <span class="btn btn-round btn-success btn-file">
+                            <i class="fa fa-upload"></i> <span class="hidden-xs">Import Excel</span> <input type="file" name="file" id="fileExcel">
+                        </span>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="http://oms.rapid.com.vn/images/default-avatar.png" alt="">Administrator
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                        <li>
+                            <a href="http://oms.rapid.com.vn/user/profile">  Tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="http://oms.rapid.com.vn/user/logout"><i class="fa fa-sign-out pull-right"></i> Thoát</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">0</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</div>
+ <!-- /top navigation -->            <!-- page content -->
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Danh sách manifest chờ duyệt</h3>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row tile_count">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-cube"></i>
+                </div>
+                <div class="count">0</div>
+                <h3>Total MAWB</h3>
+                <p>Tổng số MAWB.</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-cubes"></i>
+                </div>
+                <div class="count green">0</div>
+                <h3>Total Box</h3>
+                <p>Tổng số box.</p>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-copy"></i>
+                </div>
+                <div class="count">0</div>
+                <h3>Total Shipment</h3>
+                <p>Tổng số shipment.</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon">
+                    <i class="fa fa-caret-square-o-right"></i>
+                </div>
+                <div class="count green">0</div>
+                <h3>Total Item</h3>
+                <p>Tổng số item.</p>
+            </div>
+        </div>
+    </div>
+    <div class="well well-sm well-white">
+        <form action="" method="GET" class="form-horizontal" role="form" id="formSearch">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="width: 100%;">
+                        <legend>Lọc dữ liệu</legend>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-3">
+                        <label for="airbill">AirWay Bill</label>
+                        <input type="text" class="form-control" name="airbill" value="" placeholder="Input AirWay Bill">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="boxid">BoxID</label>
+                        <input type="text" class="form-control" name="boxid" value="" placeholder="Input BoxID">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="flight">Flight</label>
+                        <input type="text" class="form-control" name="flight" value="" placeholder="Input Flight No">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="shipment">Shipment</label>
+                        <input type="text" class="form-control" name="shipment" value="" placeholder="Input Shipment No">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="timer">Khoảng thời gian</label>
+                        <input type="hidden" name="_ts" value="">
+                        <input type="hidden" name="_te" value="">
+                        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span></span> <b class="caret pull-right" style="margin-top: 8px;"></b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-dark"><i class="fa fa-filter"></i> Lọc</button>
+                    <span class="btn btn-default f5-form"><i class="fa fa-refresh"></i> Reset</span>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Manifest <small>Danh sách đang chờ duyệt </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <h4><small>Total: </small><strong class="text-danger">0</strong></h4>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <!-- content starts here -->
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Master AirWayBill </th>
+                                    <th>Shipment No </th>
+                                    <th>Box ID </th>
+                                    <th>Flight</th>
+                                    <th>Contact</th>
+                                    <th>Content </th>
+                                    <th>Qty </th>
+                                    <th>Unit Price </th>
+                                    <th>Total Value </th>
+                                    <th>Weight </th>
+                                    <th style="width:80px;" class="hide"><i class="fa fa-wrench"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="11" class="text-center">Không tìm thấy dữ liệu.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-center">
+
+                    </div>
+
+                    <!-- content ends here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer content -->
+    <footer>
+        <div class="">
+            <p class="pull-right">
+                Rapid Logistics©2017.
+            </p>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+<!-- /page content -->

@@ -28,5 +28,20 @@ namespace Rapid.Data
                 bool? IsApproved,
                 string Status
             );
+
+        List<dynamic> FilterStandardPaging(
+            string AirwayBill,
+                string BoxID,
+                string FlightNo,
+                string Shipmment,
+                DateTime? TimeCreatedFrom, DateTime? TimeCreatedTo,
+                bool? IsTranslated,
+                bool? IsApproved,
+                string Status,
+                string SortByKey,
+                int PageIndex,
+                int PageSize,
+                out long TotalPage
+            );
     }
 }
